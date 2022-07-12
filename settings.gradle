@@ -1,0 +1,31 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'dagger.hilt.android.plugin') {
+                useModule("com.google.dagger:hilt-android-gradle-plugin:$dagger_hilt")
+            }
+        }
+    }
+}
+
+apply from: 'versions.gradle'
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "My Phone"
+include ':app'
+include ':ui-favorites'
+include ':ui-recents'
+include ':ui-contacts'
+include ':ui-keypad'
+include ':ui-voicemail'
