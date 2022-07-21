@@ -59,9 +59,12 @@ dependencies {
 
     implementation "androidx.compose.ui:ui:$compose"
     implementation "androidx.compose.material3:material3:$material"
+    implementation "androidx.compose.material:material-icons-extended:$compose"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose"
+    implementation "androidx.navigation:navigation-compose:$compose_navigation"
+    implementation "com.google.accompanist:accompanist-navigation-animation:$compose_navigation_animation"
     implementation "com.google.accompanist:accompanist-systemuicontroller:$compose_accompanist"
     implementation "androidx.activity:activity-compose:$activity_compose"
     implementation "androidx.emoji2:emoji2:$emoji2"

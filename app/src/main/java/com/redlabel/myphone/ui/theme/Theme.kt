@@ -9,13 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.redlabel.myphone.configuration.preferences.MyPhonePreferences
-
-enum class MyPhoneTheme {
-    LIGHT,
-    DARK,
-    SYSTEM,
-    DYNAMIC
-}
+import com.redlabel.myphone.configuration.preferences.MyPhoneTheme as Theme
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -64,12 +58,12 @@ fun MyPhoneTheme(
 @Composable
 fun MyPhonePreferences.colorSchemeWrapper(isSystemInDarkTheme: Boolean = isSystemInDarkTheme()): ColorSchemeWrapper {
     val context = LocalContext.current
-    val themeState = observeTheme().collectAsState(initial = MyPhoneTheme.SYSTEM)
+    val themeState = observeTheme().collectAsState(initial = Theme.SYSTEM)
     return when (themeState.value) {
-        MyPhoneTheme.LIGHT -> ColorSchemeWrapper(colorScheme = LightColorScheme, isSystemInDarkTheme = false)
-        MyPhoneTheme.DARK -> ColorSchemeWrapper(colorScheme = DarkColorScheme, isSystemInDarkTheme = true)
-        MyPhoneTheme.SYSTEM -> ColorSchemeWrapper(getSystemColorScheme(isSystemInDarkTheme), isSystemInDarkTheme)
-        MyPhoneTheme.DYNAMIC -> ColorSchemeWrapper(getDynamicColorScheme(context, isSystemInDarkTheme), isSystemInDarkTheme)
+        Theme.LIGHT -> ColorSchemeWrapper(colorScheme = LightColorScheme, isSystemInDarkTheme = false)
+        Theme.DARK -> ColorSchemeWrapper(colorScheme = DarkColorScheme, isSystemInDarkTheme = true)
+        Theme.SYSTEM -> ColorSchemeWrapper(getSystemColorScheme(isSystemInDarkTheme), isSystemInDarkTheme)
+        Theme.DYNAMIC -> ColorSchemeWrapper(getDynamicColorScheme(context, isSystemInDarkTheme), isSystemInDarkTheme)
     }
 }
 

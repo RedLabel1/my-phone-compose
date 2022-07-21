@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Phone</string>
+    <string name="route_contacts">Contactos</string>
+    <string name="route_favorites">Favoritos</string>
+    <string name="route_keypad">Teclado</string>
+    <string name="route_recents">Recientes</string>
+    <string name="route_voicemail">Buzón voz</string>
+</resources>

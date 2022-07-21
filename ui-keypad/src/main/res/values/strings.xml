@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialpad_digit_1" translatable="false">1</string>
+    <string name="dialpad_digit_2" translatable="false">2</string>
+    <string name="dialpad_digit_3" translatable="false">3</string>
+    <string name="dialpad_digit_4" translatable="false">4</string>
+    <string name="dialpad_digit_5" translatable="false">5</string>
+    <string name="dialpad_digit_6" translatable="false">6</string>
+    <string name="dialpad_digit_7" translatable="false">7</string>
+    <string name="dialpad_digit_8" translatable="false">8</string>
+    <string name="dialpad_digit_9" translatable="false">9</string>
+    <string name="dialpad_digit_0" translatable="false">0</string>
+    <string name="dialpad_digit_star" translatable="false">*</string>
+    <string name="dialpad_digit_number_sign" translatable="false">#</string>
+    <string name="dialpad_aux_1" translatable="false"> </string>
+    <string name="dialpad_aux_2" translatable="false">ABC</string>
+    <string name="dialpad_aux_3" translatable="false">DEF</string>
+    <string name="dialpad_aux_4" translatable="false">GHI</string>
+    <string name="dialpad_aux_5" translatable="false">JKL</string>
+    <string name="dialpad_aux_6" translatable="false">MNO</string>
+    <string name="dialpad_aux_7" translatable="false">PQRS</string>
+    <string name="dialpad_aux_8" translatable="false">TUV</string>
+    <string name="dialpad_aux_9" translatable="false">WXYZ</string>
+    <string name="dialpad_aux_0" translatable="false">+</string>
+</resources>
