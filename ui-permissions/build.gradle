@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
@@ -9,15 +9,10 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.redlabel.myphone"
-        minSdk 26
+        minSdk 23
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
 
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -48,27 +43,13 @@ android {
 
 dependencies {
 
-    implementation project(path: ':ui-favorites')
-    implementation project(path: ':ui-recents')
-    implementation project(path: ':ui-contacts')
-    implementation project(path: ':ui-keypad')
-    implementation project(path: ':ui-voicemail')
-    implementation project(path: ':ui-permissions')
-
     implementation "androidx.core:core-ktx:$androidx_core"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime"
 
     implementation "androidx.compose.ui:ui:$compose"
     implementation "androidx.compose.material3:material3:$material"
-    implementation "androidx.compose.material:material-icons-extended:$compose"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose"
-    implementation "androidx.navigation:navigation-compose:$compose_navigation"
-    implementation "com.google.accompanist:accompanist-navigation-animation:$compose_navigation_animation"
-    implementation "com.google.accompanist:accompanist-systemuicontroller:$compose_accompanist"
     implementation "androidx.activity:activity-compose:$activity_compose"
-    implementation "androidx.emoji2:emoji2:$emoji2"
 
     implementation "com.google.dagger:hilt-android:$dagger_hilt"
     kapt "com.google.dagger:hilt-compiler:$dagger_hilt"

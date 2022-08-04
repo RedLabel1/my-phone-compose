@@ -78,7 +78,11 @@ fun Home(preferences: MyPhonePreferences) {
                 })
         }
     ) { innerPadding ->
-        AnimatedNavHost(navController, startDestination = preferences.startDestination.name.lowercase(), Modifier.padding(innerPadding)) {
+        AnimatedNavHost(
+            navController = navController,
+            startDestination = preferences.startDestination.name.lowercase(),
+            modifier = Modifier.padding(innerPadding)
+        ) {
             composable(Screen.Favorites.route) { Favorites() }
             composable(Screen.Recents.route) { Recents() }
             composable(Screen.Contacts.route) { Contacts() }

@@ -9,6 +9,6 @@ ext {
     material = '1.0.0-alpha14'
     lifecycle_runtime = '2.5.0'
     activity_compose = '1.5.0'
-    emoji2 = '1.2.0-alpha04'
+    emoji2 = '1.2.0-beta01'
     junit = '4.13.2'
 }
