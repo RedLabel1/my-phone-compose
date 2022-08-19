@@ -22,9 +22,11 @@ fun Permissions(permissions: MyPhonePermissions) {
         permissions.setDefaultDialer(it.resultCode == ComponentActivity.RESULT_OK)
     }
 
-    Box(modifier = Modifier
-        .height(60.dp)
-        .fillMaxWidth()) {
+    Box(
+        modifier = Modifier
+            .height(60.dp)
+            .fillMaxSize()
+    ) {
         OutlinedButton(
             modifier = Modifier
                 .padding(vertical = 24.dp)
