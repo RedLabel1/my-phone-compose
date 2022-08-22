@@ -6,22 +6,25 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.redlabel.myphone.configuration.preferences.MyPhonePreferences
 import com.redlabel.myphone.configuration.preferences.MyPhoneTheme as Theme
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Purple200,
+    secondary = DeepPurple200,
+    tertiary = Pink200,
+    onSurface = Grey200
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
+    primary = Purple800,
+    secondary = DeepPurple800,
+    tertiary = Pink800,
+    onSurface = Grey800
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
@@ -43,15 +46,21 @@ fun MyPhoneTheme(
 
     SideEffect {
         systemUiController.setSystemBarsColor(
-            color = colorSchemeWrapper.colorScheme.background,
+            color = Color.Transparent,
             darkIcons = useDarkIcons
         )
+        systemUiController.isNavigationBarContrastEnforced = false
     }
 
     MaterialTheme(
         colorScheme = colorSchemeWrapper.colorScheme,
         typography = Typography,
-        content = content
+        content = {
+            ProvideTextStyle(
+                value = TextStyle(color = colorSchemeWrapper.colorScheme.onSurface),
+                content = content
+            )
+        }
     )
 }
 

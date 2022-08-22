@@ -43,6 +43,8 @@ android {
 
 dependencies {
 
+    implementation project(path: ':ui-common')
+
     implementation "androidx.core:core-ktx:$androidx_core"
 
     implementation "androidx.compose.ui:ui:$compose"

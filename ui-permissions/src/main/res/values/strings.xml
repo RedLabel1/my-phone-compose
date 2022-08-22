@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="set_as_default">Set as default</string>
+    <string name="set_as_default_message">MyPhone can only send or receive calls if it\'s your default phone app</string>
 </resources>

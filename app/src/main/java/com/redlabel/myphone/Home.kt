@@ -1,13 +1,13 @@
 package com.redlabel.myphone
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -16,6 +16,7 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.redlabel.myphone.configuration.preferences.MyPhonePreferences
 import com.redlabel.myphone.configuration.preferences.StartDestination
 import com.redlabel.myphone.navigation.Screen
+import com.redlabel.myphone.ui.theme.SemiTransparentPurple800
 import com.redlabel.ui_contacts.Contacts
 import com.redlabel.ui_favorites.Favorites
 import com.redlabel.ui_recents.Recents
@@ -30,7 +31,7 @@ private val navigationBarItems = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
-fun Home(preferences: MyPhonePreferences) {
+fun Home(preferences: MyPhonePreferences, modifier: Modifier = Modifier) {
 
     val navController = rememberAnimatedNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -43,6 +44,8 @@ fun Home(preferences: MyPhonePreferences) {
     }
 
     Scaffold(
+        modifier = modifier,
+        containerColor = Color.Transparent,
         bottomBar = {
             BottomAppBar(
                 icons = {
@@ -75,7 +78,9 @@ fun Home(preferences: MyPhonePreferences) {
                         }) {
                         Icon(imageVector = Screen.Keypad.icon, contentDescription = stringResource(id = Screen.Keypad.resourceId))
                     }
-                })
+                },
+                containerColor = SemiTransparentPurple800 // TODO color by theme, do not hardcode
+            )
         }
     ) { innerPadding ->
         AnimatedNavHost(

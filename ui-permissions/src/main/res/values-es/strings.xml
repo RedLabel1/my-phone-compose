@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="set_as_default">Establecer como predeterminado</string>
+    <string name="set_as_default_message">MyPhone solo puede enviar y recibir llamadas si es tu app de teléfono predeterminada</string>
 </resources>
