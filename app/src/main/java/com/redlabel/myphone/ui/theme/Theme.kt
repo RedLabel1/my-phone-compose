@@ -8,7 +8,6 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.redlabel.myphone.configuration.preferences.MyPhonePreferences
 import com.redlabel.myphone.configuration.preferences.MyPhoneTheme as Theme
@@ -54,13 +53,8 @@ fun MyPhoneTheme(
 
     MaterialTheme(
         colorScheme = colorSchemeWrapper.colorScheme,
-        typography = Typography,
-        content = {
-            ProvideTextStyle(
-                value = TextStyle(color = colorSchemeWrapper.colorScheme.onSurface),
-                content = content
-            )
-        }
+        typography = myPhoneTypography(LocalContext.current, colorSchemeWrapper),
+        content = content
     )
 }
 

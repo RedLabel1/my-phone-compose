@@ -48,6 +48,7 @@ android {
 
 dependencies {
 
+    implementation project(path: ':ui-common')
     implementation project(path: ':ui-favorites')
     implementation project(path: ':ui-recents')
     implementation project(path: ':ui-contacts')

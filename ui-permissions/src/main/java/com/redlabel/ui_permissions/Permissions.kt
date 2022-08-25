@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.redlabel.ui_permissions.permissions.MyPhonePermissions
 
@@ -45,17 +46,24 @@ fun Permissions(permissions: MyPhonePermissions, modifier: Modifier = Modifier) 
                     contentDescription = null,
                     modifier = Modifier.size(100.dp)
                 )
-                Text(text = stringResource(id = R.string.set_as_default_message), modifier = Modifier.padding(24.dp))
+                Text(
+                    text = stringResource(id = R.string.set_as_default_message),
+                    modifier = Modifier.padding(vertical = 24.dp, horizontal = 12.dp),
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center
+                )
             }
         }
 
-        Box(modifier = modifier
-            .wrapContentHeight()
-            .wrapContentWidth()) {
+        Box(
+            modifier = modifier
+                .wrapContentHeight()
+                .wrapContentWidth()
+        ) {
             OutlinedButton(
                 modifier = modifier.padding(8.dp),
                 onClick = { launcher.launch(permissions.getDefaultDialerIntent(context)) }) {
-                Text(text = stringResource(id = R.string.set_as_default), color = MaterialTheme.colorScheme.primary)
+                Text(text = stringResource(id = R.string.set_as_default), style = MaterialTheme.typography.labelLarge)
             }
         }
     }
