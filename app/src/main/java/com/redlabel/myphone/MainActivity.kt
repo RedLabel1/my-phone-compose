@@ -3,22 +3,24 @@ package com.redlabel.myphone
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.core.view.WindowCompat
 import com.redlabel.myphone.configuration.preferences.MyPhonePreferences
 import com.redlabel.myphone.ui.theme.*
 import com.redlabel.ui_permissions.Permissions
 import com.redlabel.ui_permissions.permissions.MyPhonePermissions
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
+@ExperimentalMaterial3Api
+@ExperimentalAnimationApi
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -41,14 +43,7 @@ class MainActivity : ComponentActivity() {
                     val isAppDefaultDialer =
                         permissions.observeDefaultDialerGrant().collectAsState(initial = permissions.isAppDefaultDialer)
 
-                    Image(
-                        modifier = Modifier.fillMaxSize(),
-                        painter = painterResource(id = R.drawable.light_background),
-                        contentScale = ContentScale.FillBounds,
-                        contentDescription = null
-                    )
-
-                    Surface(modifier = Modifier.fillMaxSize(), color = Color.Transparent) {
+                    Surface(modifier = Modifier.fillMaxSize()) {
                         if (isAppDefaultDialer.value) {
                             Home(preferences, modifier = Modifier.navigationBarsPadding().systemBarsPadding())
                         } else {

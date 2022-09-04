@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
@@ -16,11 +16,11 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.redlabel.myphone.configuration.preferences.MyPhonePreferences
 import com.redlabel.myphone.configuration.preferences.StartDestination
 import com.redlabel.myphone.navigation.Screen
-import com.redlabel.myphone.ui.theme.SemiTransparentPurple800
 import com.redlabel.ui_contacts.Contacts
 import com.redlabel.ui_favorites.Favorites
 import com.redlabel.ui_recents.Recents
 import com.redlabel.ui_voicemail.Voicemail
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 private val navigationBarItems = listOf(
     Screen.Favorites,
@@ -29,7 +29,9 @@ private val navigationBarItems = listOf(
     Screen.Voicemail
 )
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
+@ExperimentalMaterial3Api
+@ExperimentalAnimationApi
+@ExperimentalCoroutinesApi
 @Composable
 fun Home(preferences: MyPhonePreferences, modifier: Modifier = Modifier) {
 
@@ -45,10 +47,9 @@ fun Home(preferences: MyPhonePreferences, modifier: Modifier = Modifier) {
 
     Scaffold(
         modifier = modifier,
-        containerColor = Color.Transparent,
         bottomBar = {
             BottomAppBar(
-                icons = {
+                actions = {
                     Row {
                         navigationBarItems.forEach { screen ->
                             IconToggleButton(
@@ -72,14 +73,13 @@ fun Home(preferences: MyPhonePreferences, modifier: Modifier = Modifier) {
                 },
                 floatingActionButton = {
                     FloatingActionButton(
-                        elevation = BottomAppBarDefaults.FloatingActionButtonElevation,
+                        elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation(),
                         onClick = {
 
                         }) {
                         Icon(imageVector = Screen.Keypad.icon, contentDescription = stringResource(id = Screen.Keypad.resourceId))
                     }
-                },
-                containerColor = SemiTransparentPurple800 // TODO color by theme, do not hardcode
+                }
             )
         }
     ) { innerPadding ->

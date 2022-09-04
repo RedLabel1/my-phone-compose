@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.redlabel.myphone"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -59,19 +59,20 @@ dependencies {
     implementation "androidx.core:core-ktx:$androidx_core"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime"
 
-    implementation "androidx.compose.ui:ui:$compose"
     implementation "androidx.compose.material3:material3:$material"
-    implementation "androidx.compose.material:material-icons-extended:$compose"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose"
-    implementation "androidx.navigation:navigation-compose:$compose_navigation"
+    implementation "androidx.compose.ui:ui:$compose_ui"
+    implementation "androidx.compose.material:material-icons-extended:$compose_ui"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui"
+    implementation "androidx.navigation:navigation-compose:$compose"
     implementation "com.google.accompanist:accompanist-navigation-animation:$compose_navigation_animation"
     implementation "com.google.accompanist:accompanist-systemuicontroller:$compose_accompanist"
     implementation "androidx.activity:activity-compose:$activity_compose"
     implementation "androidx.emoji2:emoji2:$emoji2"
 
     implementation "com.google.dagger:hilt-android:$dagger_hilt"
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
     kapt "com.google.dagger:hilt-compiler:$dagger_hilt"
 
     testImplementation "junit:junit:$junit"

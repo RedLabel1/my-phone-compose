@@ -13,26 +13,17 @@ import com.redlabel.myphone.configuration.preferences.MyPhonePreferences
 import com.redlabel.myphone.configuration.preferences.MyPhoneTheme as Theme
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple200,
-    secondary = DeepPurple200,
-    tertiary = Pink200,
-    onSurface = Grey200
+    primary = DeepPurple200_20_shade,
+    primaryContainer = DeepPurple200_60_shade,
+    onSurface = Grey200,
+    //    surfaceVariant = SemiTransparentPurple200
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple800,
-    secondary = DeepPurple800,
-    tertiary = Pink800,
-    onSurface = Grey800
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = DeepPurple400,
+    primaryContainer = DeepPurple100,
+    onSurface = Grey800,
+//    surfaceVariant = SemiTransparentPurple800
 )
 
 @Composable
