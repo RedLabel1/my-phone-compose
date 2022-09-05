@@ -7,8 +7,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.util.UUID
+import javax.inject.Inject
 
-data class UiMessage(
+data class UiMessage @Inject constructor(
     val message: String,
     val id: Long = UUID.randomUUID().mostSignificantBits,
 )

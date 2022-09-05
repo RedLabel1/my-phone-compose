@@ -16,18 +16,24 @@ abstract class Interactor<in P, T> {
         private val Timeout = TimeUnit.SECONDS.toMillis(10)
     }
 
-    val flow = MutableSharedFlow<T>(
+    private val _flow = MutableSharedFlow<T>(
         replay = 1,
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
 
+    val flow = flow {
+        emit(null)
+        _flow.collect {
+            emit(it)
+        }
+    }
+
     suspend operator fun invoke(params: P, timeoutMs: Long = Timeout): Flow<InvokeStatus>  = flow {
         try {
             withTimeout(timeoutMs) {
                 emit(InvokeStarted)
-                kotlinx.coroutines.delay(3000)
-                flow.emit(doWork(params))
+                _flow.tryEmit(doWork(params))
                 emit(InvokeSuccess)
             }
         } catch (t: TimeoutCancellationException) {

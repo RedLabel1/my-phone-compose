@@ -6,8 +6,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import java.util.concurrent.atomic.AtomicInteger
+import javax.inject.Inject
 
-class ObservableLoadingCounter {
+class ObservableLoadingCounter @Inject constructor() {
     private val count = AtomicInteger()
     private val loadingState = MutableStateFlow(count.get())
 

@@ -12,24 +12,24 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 fun Contacts(viewModel: ContactsViewModel = hiltViewModel()) {
 
     val state = viewModel.state.collectAsState().value
-    val flow = viewModel.mflow.collectAsState().value
-    val loading = viewModel.mobservableLoadingCounter.collectAsState().value
-    val message = viewModel.muiMessageManager.collectAsState().value
-    Contacts(viewModel = viewModel, flow, loading, message)
 
+    Contacts(
+        viewModel = viewModel,
+        contacts = state.contacts,
+        isLoading = state.isLoading,
+        message = state.message
+    )
 }
 
 @Composable
 @ExperimentalCoroutinesApi
 fun Contacts(
     viewModel: ContactsViewModel,
-    contacts: List<Contact>,
+    contacts: List<Contact>?,
     isLoading: Boolean,
     message: UiMessage?
 ) {
-    if (contacts.isNotEmpty()) {
-        Text(text = contacts[0].fullName)
-    }
+    Text(text = contacts?.get(0)?.fullName ?: "")
     Text(text = isLoading.toString())
     Text(text = message?.message ?: "")
 }
