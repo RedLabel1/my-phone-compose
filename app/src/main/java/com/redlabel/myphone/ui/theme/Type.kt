@@ -21,7 +21,16 @@ fun myPhoneTypography(context: Context, colorSchemeWrapper: ColorSchemeWrapper):
     return Typography(
         bodyLarge = TextStyle(
             fontFamily = FontFamily(typeFaceLight),
-            fontSize = 20.sp,
+            fontSize = 18.sp
+        ),
+        bodyMedium = TextStyle(
+            fontFamily = FontFamily(typeFaceLight),
+            fontSize = 16.sp,
+            color = colorSchemeWrapper.colorScheme.onSurface
+        ),
+        bodySmall = TextStyle(
+            fontFamily = FontFamily(typeFaceLight),
+            fontSize = 14.sp,
             color = colorSchemeWrapper.colorScheme.onSurface
         ),
         labelLarge = TextStyle(

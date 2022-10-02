@@ -8,7 +8,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
@@ -86,7 +85,7 @@ fun Home(preferences: MyPhonePreferences, modifier: Modifier = Modifier) {
         AnimatedNavHost(
             navController = navController,
             startDestination = preferences.startDestination.name.lowercase(),
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())
         ) {
             composable(Screen.Favorites.route) { Favorites() }
             composable(Screen.Recents.route) { Recents() }

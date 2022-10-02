@@ -4,5 +4,5 @@
     <string name="route_favorites">Favoritos</string>
     <string name="route_keypad">Teclado</string>
     <string name="route_recents">Recientes</string>
-    <string name="route_voicemail">Buzón voz</string>
+    <string name="route_voicemail">Buzón de voz</string>
 </resources>

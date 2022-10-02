@@ -1,6 +1,7 @@
 package com.redlabel.data.repositories
 
 import android.content.Context
+import android.net.Uri
 import android.provider.ContactsContract
 import com.redlabel.data.model.Contact
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -15,12 +16,17 @@ class ContactsRepository @Inject constructor(@ApplicationContext private val con
         ContactsContract.Contacts.PHOTO_THUMBNAIL_URI
     )
 
-    fun retrieveContacts(): List<Contact> {
+    fun retrieveContacts(filter: String?): List<Contact> {
 
         val contacts = mutableListOf<Contact>()
 
+        val contentUri: Uri = when (filter.isNullOrEmpty()) {
+            true -> ContactsContract.Contacts.CONTENT_URI
+            false -> Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI, Uri.encode(filter))
+        }
+
         val cursor = context.contentResolver.query(
-            ContactsContract.Contacts.CONTENT_URI,
+            contentUri,
             projection,
             null,
             null,
@@ -36,10 +42,10 @@ class ContactsRepository @Inject constructor(@ApplicationContext private val con
 
             contacts.add(
                 Contact(
-                    cursor.getLong(contactId),
-                    cursor.getString(lookupKey),
-                    cursor.getString(displayName),
-                    cursor.getString(thumbnail)
+                    id = cursor.getLong(contactId),
+                    lookupKey = cursor.getString(lookupKey),
+                    fullName = cursor.getString(displayName),
+                    pictureUrl = cursor.getString(thumbnail)
                 )
             )
         }

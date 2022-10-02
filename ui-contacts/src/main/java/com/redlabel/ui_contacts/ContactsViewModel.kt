@@ -20,19 +20,35 @@ class ContactsViewModel @Inject constructor(
     private val uiMessageManager: UiMessageManager,
     ) : ViewModel() {
 
+    private val filter = MutableStateFlow<String?>(null)
+
     val state = combine(
         getContacts.flow,
+        filter,
         observableLoadingCounter.observable,
         uiMessageManager.message
-    ) { contacts, isLoading, message ->
-        ContactsViewState(contacts, isLoading, message)
+    ) { contacts, filter, isLoading, message ->
+        ContactsViewState(
+            contacts = contacts?.groupBy { it.fullName[0].toString() },
+            filter = filter,
+            isLoading = isLoading,
+            isEmptyState = contacts?.isEmpty() == true,
+            isFilterEmpty = filter.isNullOrEmpty() && contacts?.isEmpty() == true,
+            message = message
+        )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), ContactsViewState.Empty)
 
     init {
-        fetchContacts()
+        viewModelScope.launch {
+            filter.collect { fetchContacts(filter = it) }
+        }
     }
 
-    private fun fetchContacts() = viewModelScope.launch {
-        getContacts(params = Unit).collectStatus(observableLoadingCounter, uiMessageManager)
+    private fun fetchContacts(filter: String?) = viewModelScope.launch {
+        getContacts(params = GetContacts.Params(filter)).collectStatus(observableLoadingCounter, uiMessageManager)
+    }
+
+    fun updateFilter(filter: String?) = viewModelScope.launch {
+        this@ContactsViewModel.filter.emit(filter)
     }
 }

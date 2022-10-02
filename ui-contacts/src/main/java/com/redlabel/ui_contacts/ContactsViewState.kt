@@ -6,8 +6,11 @@ import com.redlabel.ui_common.model.UiMessage
 
 @Immutable
 data class ContactsViewState(
-    val contacts: List<Contact>? = null,
+    val contacts: Map<String, List<Contact>>? = null,
+    val filter: String? = null,
     val isLoading: Boolean = false,
+    val isEmptyState: Boolean = false,
+    val isFilterEmpty: Boolean = false,
     val message: UiMessage? = null
 ) {
     companion object {

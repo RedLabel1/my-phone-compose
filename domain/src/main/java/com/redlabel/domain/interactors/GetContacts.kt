@@ -6,8 +6,6 @@ import com.redlabel.domain.mapper.ContactMapper
 import com.redlabel.domain.model.Contact
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -15,9 +13,11 @@ import javax.inject.Inject
 class GetContacts @Inject constructor(
     private val contactsRepository: ContactsRepository,
     private val contactMapper: ContactMapper
-) : Interactor<Unit, List<Contact>>() {
+) : Interactor<GetContacts.Params, List<Contact>>() {
 
-    override suspend fun doWork(params: Unit): List<Contact> = withContext(Dispatchers.IO) {
-        contactsRepository.retrieveContacts().map { contactMapper.toDomain(it) }
+    override suspend fun doWork(params: Params): List<Contact> = withContext(Dispatchers.IO) {
+        contactsRepository.retrieveContacts(params.filter).map { contactMapper.toDomain(it) }
     }
+
+    data class Params(val filter: String?)
 }

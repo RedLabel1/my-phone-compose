@@ -6,7 +6,10 @@ import com.redlabel.ui_common.model.InvokeStatus
 import com.redlabel.ui_common.model.InvokeSuccess
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.withTimeout
 import java.util.concurrent.TimeUnit
 
@@ -29,7 +32,7 @@ abstract class Interactor<in P, T> {
         }
     }
 
-    suspend operator fun invoke(params: P, timeoutMs: Long = Timeout): Flow<InvokeStatus>  = flow {
+    suspend operator fun invoke(params: P, timeoutMs: Long = Timeout): Flow<InvokeStatus> = flow {
         try {
             withTimeout(timeoutMs) {
                 emit(InvokeStarted)
