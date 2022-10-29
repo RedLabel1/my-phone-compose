@@ -8,6 +8,6 @@ import javax.inject.Inject
 class ContactMapper @Inject constructor(): Mapper<ContactDataModel, Contact>() {
 
     override fun toDomain(dataModel: ContactDataModel) = with(dataModel) {
-        Contact(fullName, pictureUrl)
+        Contact(pictureUrl)
     }
 }

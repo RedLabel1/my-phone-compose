@@ -29,7 +29,7 @@ class ContactsViewModel @Inject constructor(
         uiMessageManager.message
     ) { contacts, filter, isLoading, message ->
         ContactsViewState(
-            contacts = contacts?.groupBy { it.fullName[0].toString() },
+//            contacts = contacts?.groupBy { it.fullName?.get(0).toString() },
             filter = filter,
             isLoading = isLoading,
             isEmptyState = contacts?.isEmpty() == true,

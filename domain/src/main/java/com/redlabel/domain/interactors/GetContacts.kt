@@ -16,7 +16,7 @@ class GetContacts @Inject constructor(
 ) : Interactor<GetContacts.Params, List<Contact>>() {
 
     override suspend fun doWork(params: Params): List<Contact> = withContext(Dispatchers.IO) {
-        contactsRepository.retrieveContacts(params.filter).map { contactMapper.toDomain(it) }
+        contactsRepository.retrieveContactData(params.filter).map { contactMapper.toDomain(it) }
     }
 
     data class Params(val filter: String?)

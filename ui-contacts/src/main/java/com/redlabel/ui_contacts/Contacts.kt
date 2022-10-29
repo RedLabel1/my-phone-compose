@@ -152,10 +152,10 @@ fun ContactsContent(
                     }
 
                     items(contactsForInitial) { contact ->
-                        Text(
-                            text = contact.fullName,
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
+//                        Text(
+//                            text = contact.fullName ?: "",
+//                            style = MaterialTheme.typography.bodyMedium,
+//                        )
                     }
                 }
             }
